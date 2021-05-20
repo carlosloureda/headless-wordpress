@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wordpress Headless (with NextJs)
 
-## Getting Started
+This is more a work & show while I am learning WP and Headless using:
 
-First, run the development server:
+- WpGraphql
+- NextJS
 
-```bash
-npm run dev
-# or
-yarn dev
+We are builing a `boilerplate` for our company **webstantly**, this is the **canary** version to test and learn.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Conventions](#conventions)
+- [Support](#support)
+- [Contributing](#contributing)
+
+## Installation
+
+- For the **frontend** This is a `nextjs` bootstrapped project, so download this repository to your local machine:
+
+```sh
+cd [project_folder]
+yarn install
+yarn run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- For the **backend** we are going to use Wordpress, I will leave a list of WP plugins and configuration on a section of this README, but also a **.zip** file to import a pre-installed wordpress version to easily hook up. (check `backend` folder for this)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- You need to have some **environment** variables defined, copy the **.env-EXAMPLE** file and rename it to **.env.local** and add the proper configuration variables.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+WIP
 
-## Learn More
+## Conventions
 
-To learn more about Next.js, take a look at the following resources:
+- For commits we will follow [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Please [open an issue](https://github.com/carlosloureda/headless-wordpress/issues/new) for support.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/carlosloureda/headless-wordpress/compare/).
