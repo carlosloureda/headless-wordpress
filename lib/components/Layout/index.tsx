@@ -4,21 +4,16 @@ import Footer from './Footer'
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
-    <div
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-      }}
-    >
+    <div className="flex flex-col flex-1 min-h-screen">
       <Header />
-      <div
+      <main
+        className="flex flex-row flex-1"
         style={{
-          paddingBottom: '2.5em',
+          width: '100%',
         }}
       >
         {children}
-      </div>
-
+      </main>
       <Footer />
     </div>
   )

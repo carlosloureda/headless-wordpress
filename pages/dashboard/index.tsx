@@ -4,18 +4,13 @@ import useAuth from '../../lib/hooks/useAuth'
 import Link from 'next/link'
 
 const DashboardPage = (): JSX.Element => {
-  const { isLoggedIn, user, deleteAuthData, isLoading } = useAuth()
+  const { isLoggedIn, user, isLoading } = useAuth()
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
       Router.push('/login')
     }
   }, [isLoading, isLoggedIn])
-
-  const onLogout = (): void => {
-    deleteAuthData()
-    Router.push('/login')
-  }
 
   if (isLoading || !isLoggedIn) {
     // return <FullPageLoader />;
@@ -29,13 +24,6 @@ const DashboardPage = (): JSX.Element => {
       <div>
         <h2>{`Welcome ${user?.name}!`}</h2>
         <div>
-          <button
-            className="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded"
-            onClick={onLogout}
-          >
-            Logout
-          </button>
-
           <Link href="/examples/authorization">
             <a>
               <p>Go to ...</p>

@@ -4,6 +4,9 @@ import Link from 'next/link'
 import Router from 'next/router'
 import useAuth from '../../../lib/hooks/useAuth'
 import { tLoginUser } from '../../../lib/types/user'
+import Form from '../ui/Form/Form'
+import InputField from '../ui/Form/Input'
+import Button from '../ui/Form/Button'
 
 const LoginForm = ({
   onSubmit,
@@ -47,63 +50,51 @@ const LoginForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label className="block mb-2 text-indigo-500" htmlFor="username">
-          Username
-        </label>
-        <input
-          {...register('username', { required: true })}
-          className="w-full p-2 mb-6 text-indigo-700 border-b-2 border-indigo-500 outline-none focus:bg-gray-300"
-          type="text"
-          name="username"
+    <div className="flex justify-center items-center w-full">
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <InputField
+          id="username"
+          options={{
+            required: true,
+          }}
+          label="Username"
+          register={register}
+          errors={errors}
         />
-        {errors.username && errors.username.type === 'required' && (
-          <span className="text-red-300">This field is required</span>
-        )}
-      </div>
-      <div>
-        <label className="block mb-2 text-indigo-500" htmlFor="password">
-          Password
-        </label>
-        <input
-          {...register('password', { required: true })}
-          className="w-full p-2 mb-6 text-indigo-700 border-b-2 border-indigo-500 outline-none focus:bg-gray-300"
+        <InputField
+          id="password"
           type="password"
-          name="password"
+          options={{
+            required: true,
+          }}
+          label="Password"
+          register={register}
+          errors={errors}
         />
-        {errors.password && errors.password.type === 'required' && (
-          <span className="text-red-300">This field is required</span>
+        {error && (
+          <div>
+            <p className="text-red-300">Loggin Error: {error}</p>
+          </div>
         )}
-      </div>
-      {error && (
         <div>
-          <p className="text-red-300">Loggin Error: {error}</p>
+          <p className="pb-2">
+            Are you new?
+            <Link href="/register">
+              <a className="text-indigo-700 ml-2">Register</a>
+            </Link>
+          </p>
+          <p className="pb-8">
+            Forgot password?
+            <Link href="/forgot-password">
+              <a className="text-indigo-700 ml-2">Recover</a>
+            </Link>
+          </p>
         </div>
-      )}
-      <div>
-        <p>
-          Are you new?
-          <Link href="/register">
-            <a>Register</a>
-          </Link>
-        </p>
-        <p>
-          Forgot password?
-          <Link href="/forgot-password">
-            <a>Recover</a>
-          </Link>
-        </p>
-      </div>
-      <div>
-        <button
-          className="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded"
-          type="submit"
-        >
-          Login
-        </button>
-      </div>
-    </form>
+        <div>
+          <Button>Login</Button>
+        </div>
+      </Form>
+    </div>
   )
 }
 

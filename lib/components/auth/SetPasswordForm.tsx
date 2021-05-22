@@ -1,17 +1,21 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { RegisterUserType } from '../../types/user'
-import Button from '../ui/Form/Button'
+
 import Form from '../ui/Form/Form'
 import InputField from '../ui/Form/Input'
+import Button from '../ui/Form/Button'
 
-type RegisterFormProps = {
-  onSubmit: (data: RegisterUserType) => void
+type SetPasswordFormData = {
+  password: string
+}
+
+type SetPasswordFormProps = {
+  onSubmit: (data: SetPasswordFormData) => void
   error: string
 }
 
-const RegisterForm = ({ onSubmit, error }: RegisterFormProps): JSX.Element => {
+const SetPasswordForm = ({ onSubmit, error }: SetPasswordFormProps): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -21,25 +25,6 @@ const RegisterForm = ({ onSubmit, error }: RegisterFormProps): JSX.Element => {
   return (
     <div className="flex justify-center items-center w-full">
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <InputField
-          id="username"
-          options={{
-            required: true,
-          }}
-          label="Username"
-          register={register}
-          errors={errors}
-        />
-        <InputField
-          id="email"
-          type="email"
-          options={{
-            required: true,
-          }}
-          label="Email"
-          register={register}
-          errors={errors}
-        />
         <InputField
           id="password"
           type="password"
@@ -57,18 +42,18 @@ const RegisterForm = ({ onSubmit, error }: RegisterFormProps): JSX.Element => {
         )}
         <div>
           <p className="pb-8">
-            Already registered?
+            Did you remember your password?
             <Link href="/login">
               <a className="text-indigo-700 ml-2">Login</a>
             </Link>
           </p>
         </div>
         <div>
-          <Button>Register</Button>
+          <Button>Update</Button>
         </div>
       </Form>
     </div>
   )
 }
 
-export default RegisterForm
+export default SetPasswordForm

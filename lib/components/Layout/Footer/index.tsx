@@ -2,14 +2,7 @@ import Image from 'next/image'
 
 const Footer = (): JSX.Element => {
   return (
-    <footer
-      className="text-white w-full bg-black border-solid border-gray-100 flex justify-center items-center"
-      style={{
-        position: 'absolute',
-        bottom: '0',
-        height: '4em',
-      }}
-    >
+    <footer className="text-white w-full bg-black border-solid border-gray-100 flex justify-center items-center h-16">
       <a
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         target="_blank"

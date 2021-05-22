@@ -17,6 +17,12 @@ export default function Home(): JSX.Element {
             <p>Check the quick links for __register__, __login__, reset and set password.</p>
           </a>
         </Link>
+        <Link href="/examples/ui/notifications">
+          <a className={styles.card}>
+            <h2>UI Notifications &rarr;</h2>
+            <p>Notifications, alerts, toasts!.</p>
+          </a>
+        </Link>
       </div>
     </main>
   )

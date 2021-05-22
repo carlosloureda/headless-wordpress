@@ -21,6 +21,48 @@ export default function AuthorizationPage(): JSX.Element {
             <p>If you already have an user you can check the login form over here</p>
           </a>
         </Link>
+        <Link href="/forgot-password">
+          <a className={styles.card}>
+            <h2>Forgot Password &rarr;</h2>
+            <p>Wanna try out the recovery password flow ?</p>
+          </a>
+        </Link>
+        <Link href="/dashboard">
+          <a className={styles.card}>
+            <h2>Dashboard &rarr;</h2>
+            <p>This is a private area, and you should only access it with a session</p>
+          </a>
+        </Link>
+        <Link href="/login">
+          <a className={styles.card}>
+            <h2>Login &rarr;</h2>
+            <p>If you already have an user you can check the login form over here</p>
+          </a>
+        </Link>
+        <Link href="/forgot-password">
+          <a className={styles.card}>
+            <h2>Forgot Password &rarr;</h2>
+            <p>Wanna try out the recovery password flow ?</p>
+          </a>
+        </Link>
+        <Link href="/dashboard">
+          <a className={styles.card}>
+            <h2>Dashboard &rarr;</h2>
+            <p>This is a private area, and you should only access it with a session</p>
+          </a>
+        </Link>
+        <Link href="/login">
+          <a className={styles.card}>
+            <h2>Login &rarr;</h2>
+            <p>If you already have an user you can check the login form over here</p>
+          </a>
+        </Link>
+        <Link href="/forgot-password">
+          <a className={styles.card}>
+            <h2>Forgot Password &rarr;</h2>
+            <p>Wanna try out the recovery password flow ?</p>
+          </a>
+        </Link>
         <Link href="/dashboard">
           <a className={styles.card}>
             <h2>Dashboard &rarr;</h2>
