@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
@@ -11,15 +11,23 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.19",
+    "@wpengine/headless": "^0.6.3",
+    "apollo-link-token-refresh": "^0.3.2",
+    "graphql": "^15.5.0",
+    "jwt-decode": "^3.1.2",
     "next": "10.2.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.6.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^15.3.1",
     "@types/react": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
