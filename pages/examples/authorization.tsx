@@ -24,10 +24,16 @@ export default function AuthorizationPage(): JSX.Element {
               <p>See the complete registration flow, login, reset and set password</p>
             </a>
           </Link>
+          <Link href="/login">
+            <a className={styles.card}>
+              <h2>Login &rarr;</h2>
+              <p>If you already have an user you can check the login form over here</p>
+            </a>
+          </Link>
           <Link href="/dashboard">
             <a className={styles.card}>
-              <h2>dashboard &rarr;</h2>
-              <p>See the complete registration flow, login, reset and set password</p>
+              <h2>Dashboard &rarr;</h2>
+              <p>This is a private area, and you should only access it with a session</p>
             </a>
           </Link>
         </div>

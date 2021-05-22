@@ -20,3 +20,8 @@ export interface IAuthData {
   user: User
   isLoading: boolean | null
 }
+
+export type tLoginUser = {
+  username: string
+  password: string
+}
