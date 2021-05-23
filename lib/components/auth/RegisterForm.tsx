@@ -9,9 +9,10 @@ import InputField from '../ui/Form/Input'
 type RegisterFormProps = {
   onSubmit: (data: RegisterUserType) => void
   error: string
+  loading: boolean
 }
 
-const RegisterForm = ({ onSubmit, error }: RegisterFormProps): JSX.Element => {
+const RegisterForm = ({ onSubmit, error, loading }: RegisterFormProps): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -64,7 +65,9 @@ const RegisterForm = ({ onSubmit, error }: RegisterFormProps): JSX.Element => {
           </p>
         </div>
         <div>
-          <Button>Register</Button>
+          <Button isLoading={loading} loadingText="Registering">
+            Register
+          </Button>
         </div>
       </Form>
     </div>

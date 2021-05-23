@@ -26,7 +26,7 @@ const RegisterPage = (): JSX.Element => {
         authToken: data.registerUser.user.authToken,
         refreshToken: data.registerUser.user.jwtRefreshToken,
         user: data.registerUser.user,
-        isLoading: false,
+        isLoading: true, // magic for the redirection to dashboard
       })
       Router.push('/dashboard')
     },
@@ -51,9 +51,7 @@ const RegisterPage = (): JSX.Element => {
     }
   }, [isLoggedIn])
 
-  if (loading) return <p>Registering ...!</p>
-
-  return <RegisterForm onSubmit={onSubmit} error={error?.message} />
+  return <RegisterForm onSubmit={onSubmit} error={error?.message} loading={loading} />
 }
 
 export default RegisterPage

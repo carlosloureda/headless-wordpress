@@ -33,8 +33,7 @@ const LoginPage = (): JSX.Element => {
     })
   }
 
-  if (loading) return <p>Loging in ...!</p>
-  return <LoginForm onSubmit={onSubmit} error={error?.message} />
+  return <LoginForm onSubmit={onSubmit} loading={loading} error={error?.message} />
 }
 
 export default LoginPage

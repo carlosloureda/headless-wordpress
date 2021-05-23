@@ -11,9 +11,11 @@ import Button from '../ui/Form/Button'
 const LoginForm = ({
   onSubmit,
   error,
+  loading,
 }: {
   onSubmit: (data: tLoginUser) => void
   error: string
+  loading: boolean
 }): JSX.Element => {
   const {
     register,
@@ -21,33 +23,13 @@ const LoginForm = ({
     formState: { errors },
   } = useForm()
 
-  const { isLoggedIn, user, deleteAuthData } = useAuth()
+  const { isLoggedIn } = useAuth()
 
   useEffect(() => {
     if (isLoggedIn) {
       Router.push('/dashboard')
     }
   }, [isLoggedIn])
-
-  const onLogout = (): void => {
-    deleteAuthData()
-  }
-
-  if (isLoggedIn) {
-    return (
-      <div>
-        <h1>Welcome {user.username}</h1>
-        <div>
-          <button
-            className="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded"
-            onClick={onLogout}
-          >
-            Logout
-          </button>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="flex justify-center items-center w-full">
@@ -91,7 +73,9 @@ const LoginForm = ({
           </p>
         </div>
         <div>
-          <Button>Login</Button>
+          <Button isLoading={loading} loadingText="Loging in">
+            Login
+          </Button>
         </div>
       </Form>
     </div>

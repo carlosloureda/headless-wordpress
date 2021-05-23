@@ -42,8 +42,8 @@ You need to add into  `wp-config.php` the following:
 
 Also  need to allow user registration: wp > settings > Membership -  Anyone can register
 
+- To override the forgot password emails and so on you can use this [plugin](https://github.com/carlosloureda/wbs-headless-auth-plugin), also uploaded in the `backend` folder.
 
-WIP
 
 ## Conventions
 

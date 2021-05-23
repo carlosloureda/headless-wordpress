@@ -2,6 +2,7 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import useAuth from '../../../../../lib/hooks/useAuth'
+import DotLoader from '../../../ui/loaders/DotLoader'
 
 export const Menu = (): JSX.Element => {
   // TRICK "Temporal" for client side rendering, the menu is empty on client side routes
@@ -12,30 +13,43 @@ export const Menu = (): JSX.Element => {
     path: item.path,
   }))
 
-  const { isLoggedIn, user } = useAuth()
+  const { isLoggedIn, user, isLoading } = useAuth()
 
-  if (isLoggedIn) {
+  if (isLoading) {
     parsedItems.push({
-      id: 'logout-menu',
-      label: 'logout',
-      path: '/logout',
+      id: 'loading',
+      label: <DotLoader className="px-5" />,
+      path: '/',
     })
     parsedItems.push({
-      id: 'dashboard-menu',
-      label: user ? user.name : 'dashboard',
-      path: '/dashboard',
+      id: 'loading2',
+      label: <DotLoader className="px-5" />,
+      path: '/',
     })
   } else {
-    parsedItems.push({
-      id: 'register-menu',
-      label: 'register',
-      path: '/register',
-    })
-    parsedItems.push({
-      id: 'login-menu',
-      label: 'login',
-      path: '/login',
-    })
+    if (isLoggedIn) {
+      parsedItems.push({
+        id: 'logout-menu',
+        label: 'logout',
+        path: '/logout',
+      })
+      parsedItems.push({
+        id: 'dashboard-menu',
+        label: user ? user.name : 'dashboard',
+        path: '/dashboard',
+      })
+    } else {
+      parsedItems.push({
+        id: 'register-menu',
+        label: 'register',
+        path: '/register',
+      })
+      parsedItems.push({
+        id: 'login-menu',
+        label: 'login',
+        path: '/login',
+      })
+    }
   }
 
   return (
@@ -48,7 +62,8 @@ export const Menu = (): JSX.Element => {
               className={clsx(
                 'menuItem',
                 'text-white text-f-14 uppercase tracking-[1px] hover:text-gold hover:no-underline',
-                'px-5'
+                'px-5',
+                'flex items-center'
               )}
             >
               {label}

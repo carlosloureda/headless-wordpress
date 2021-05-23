@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Router from 'next/router'
 import useAuth from '../../lib/hooks/useAuth'
 import Link from 'next/link'
+import PageLoader from '../../lib/components/ui/loaders/PageLoader'
 
 const DashboardPage = (): JSX.Element => {
   const { isLoggedIn, user, isLoading } = useAuth()
@@ -13,8 +14,7 @@ const DashboardPage = (): JSX.Element => {
   }, [isLoading, isLoggedIn])
 
   if (isLoading || !isLoggedIn) {
-    // return <FullPageLoader />;
-    return <p>Loading ...</p>
+    return <PageLoader />
   }
 
   return (
