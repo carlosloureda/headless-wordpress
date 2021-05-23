@@ -44,6 +44,28 @@ Also  need to allow user registration: wp > settings > Membership -  Anyone can 
 
 - To override the forgot password emails and so on you can use this [plugin](https://github.com/carlosloureda/wbs-headless-auth-plugin), also uploaded in the `backend` folder.
 
+### Previews
+There is an issue with [JWT Authorization](https://github.com/wpengine/headless-framework/issues/191), you need to comment on the JWT plugin source code the following code:
+
+```js
+add_action( 'init_graphql_request', function() {
+  $jwt_secret = Auth::get_secret_key();
+  if ( empty( $jwt_secret ) || 'graphql-jwt-auth' === $jwt_secret ) {
+    throw new \Exception( __( 'You must define the GraphQL JWT Auth secret to use the WPGraphQL JWT Authentication plugin.', 'graphql-jwt-auth' ) );
+  } else {
+    $token = Auth::validate_token();
+    if ( is_wp_error( $token ) ) {
+      add_action( 'graphql_before_resolve_field', function() use ( $token ) {
+        throw new \Exception( $token->get_error_code() . ' | ' . $token->get_error_message() );
+      }, 1 );
+    }
+  }
+});
+```
+
+- [Custom Post Type] - with (Draft) the URL is: http://localhost:3000/preview?post_type=testcustompost-1&p=72&preview=true
+- [Custom Post Type] - with (Published  ) the URL is: http://localhost:3000/preview/testcustompost-1test-custom-post-type-published-1?preview_id=73&preview_nonce=b4e1e6e9c8&_thumbnail_id=-1&preview=true&p=73
+
 
 ## Conventions
 

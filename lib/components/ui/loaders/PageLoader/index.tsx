@@ -2,12 +2,18 @@
 
 import styles from './PageLoader.module.css'
 
-const PageLoader = ({ className }: { className?: string }): JSX.Element => {
+const PageLoader = ({
+  className,
+  title = 'Loading',
+}: {
+  className?: string
+  title?: string
+}): JSX.Element => {
   return (
     <div className={className ? `${styles.stage} ${className}` : styles.stage}>
       <div className={styles['dot-bricks']}></div>
       <div className="pt-8 text-lg tracking-widest" style={{ color: '#9880ff' }}>
-        Loading
+        {title}
       </div>
     </div>
   )
