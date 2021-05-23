@@ -29,9 +29,21 @@ yarn run dev
 
 - You need to have some **environment** variables defined, copy the **.env-EXAMPLE** file and rename it to **.env.local** and add the proper configuration variables.
 
-## Usage
 
-WIP
+## Usage
+### JWT Authorization
+
+You need to add into  `wp-config.php` the following:
+
+```php
+  define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', 'super-secret-key' );
+  define('JWT_AUTH_CORS_ENABLE', true);
+```
+
+Also  need to allow user registration: wp > settings > Membership -  Anyone can register
+
+- To override the forgot password emails and so on you can use this [plugin](https://github.com/carlosloureda/wbs-headless-auth-plugin), also uploaded in the `backend` folder.
+
 
 ## Conventions
 
