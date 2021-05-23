@@ -14,3 +14,6 @@
 # Auth
 
 -https://dev.to/theodorusclarence/next-js-redirect-without-flashing-content-5bio
+
+# Previews
+- Fix for JWT: https://github.com/wpengine/headless-framework/issues/191
