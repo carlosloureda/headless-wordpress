@@ -1,7 +1,6 @@
 import { AppContext, AppProps } from 'next/app'
 import { HeadlessProvider } from '@wpengine/headless/react'
 import { AuthProvider } from '../lib/hooks/useAuth'
-// import { ApolloProvider } from '@apollo/client/react'
 import '../styles/globals.css'
 import Layout from '../lib/components/Layout'
 
@@ -16,11 +15,9 @@ function App({ Component, pageProps }: AppContext & AppProps): JSX.Element {
   return (
     <HeadlessProvider pageProps={pageProps}>
       <AuthProvider>
-        {/* <ApolloProvider client={client}> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {/* </ApolloProvider> */}
       </AuthProvider>
     </HeadlessProvider>
   )
