@@ -17,7 +17,7 @@ const ForgotPasswordPage = (): JSX.Element => {
       setEmailSent(true)
     },
     onError: (error) => {
-      console.log('error: ', error)
+      console.error('[ForgotPasswordPage] An error happened: ', error)
     },
   })
 
