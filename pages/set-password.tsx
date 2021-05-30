@@ -17,7 +17,7 @@ const SetPasswordPage = (): JSX.Element => {
       alert('Password reset!')
     },
     onError: (error) => {
-      console.log('error: ', error.message)
+      console.error('[SetPasswordPage] error: ', error.message)
     },
   })
 

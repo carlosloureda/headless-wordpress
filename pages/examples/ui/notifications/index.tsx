@@ -20,7 +20,7 @@ export default function NotificationsPage(): JSX.Element {
 
       <button
         onClick={() => {
-          console.log('show')
+          // console.log('show')
         }}
       >
         Show Success toast
