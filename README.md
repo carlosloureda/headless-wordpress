@@ -67,6 +67,51 @@ add_action( 'init_graphql_request', function() {
 - [Custom Post Type] - with (Published  ) the URL is: http://localhost:3000/preview/testcustompost-1test-custom-post-type-published-1?preview_id=73&preview_nonce=b4e1e6e9c8&_thumbnail_id=-1&preview=true&p=73
 
 
+### Custom Mutation for CPT
+
+- We want to create a new CPT `properties` (with content/image/gallery custom fields) and a __custom mutation__:
+
+```php
+add_action('graphql_register_types', function(){
+    register_graphql_mutation('createCustomProperty', [
+        'inputFields' => [
+           'description' => [
+                'type' => ['non_null' => 'String'],
+                'description' => 'Description of property'
+            ],
+			     
+        ],
+        'outputFields' => [
+            'propertySubmitted' => [
+                'type' => 'Boolean',
+                'description' =>'Property submission successfull or not',
+            ],
+          'text' => [
+            'type'    => 'String',
+            'resolve' => function ($payload) {
+              return $payload['text'];
+            },
+          ]
+			
+        ],
+        'mutateAndGetPayload' => function($input, $context, $info){
+            $post_id = wp_insert_post([
+                'post_type'=> 'property',
+                'post_title' => uniqid('property-', false),
+                'post_content' => sanitize_text_field($input['descriptionInput']),
+                'post_status' => 'draft'
+            ]);
+			update_field('description',$input['description'], $post_id);
+            return [
+				'propertySubmitted' => true,
+					'text' => 'Uploaded file was "' . $input['file']['name'] . '" (' . $input['file']['type'] . ').',
+			];
+        }
+    ]);
+});
+```
+
+Let´s see if we can add title and images later ..., need `code snippets`
 ## Conventions
 
 - For commits we will follow [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/)

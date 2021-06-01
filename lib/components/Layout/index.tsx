@@ -13,14 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <meta name="description" content="Boilerplate for Headless Wordpress using NextJS" />
       </Head>
       <Header />
-      <main
-        className="flex flex-row flex-1"
-        style={{
-          width: '100%',
-        }}
-      >
-        {children}
-      </main>
+      <main className="flex flex-row flex-1 w-full">{children}</main>
       <Footer />
     </div>
   )

@@ -7,6 +7,7 @@ const WP_REGISTER_USER = gql`
         jwtAuthToken
         jwtRefreshToken
         id
+        databaseId
         name
         username
         email
@@ -29,6 +30,7 @@ const WP_LOGIN_USER = gql`
       authToken
       user {
         id
+        databaseId
         name
         username
         email

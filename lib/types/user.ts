@@ -5,6 +5,8 @@ export interface RegisterUserType {
 }
 
 export interface User {
+  id: number
+  databaseId: number
   username: string
   email: string
   name: string
