@@ -4,10 +4,14 @@ import React, { useContext } from 'react'
 import { useReactiveVar } from '@apollo/client'
 
 import { apolloAuthData, client } from '../services/apollo'
+
+// import { apolloAuthData } from '../services/apollo'
 import { setPersistedAuthData, deletePersistedAuthData } from '../services/auth'
 import useAuthTokenRefresher from './useAuthTokenRefresher'
+// import { getApolloClient } from '@wpengine/headless'
 import { IAuthData, User as IUser } from '../types/user'
 
+// const client = getApolloClient()
 interface AuthContextProps {
   isLoggedIn: boolean
   user: IUser
@@ -64,6 +68,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }): JSX.E
   // const { data } = useQuery(GET_APOLLO_AUTH_DATA) // "Apollo makeVars session"
 
   const authData = useReactiveVar(apolloAuthData)
+  console.log('AuthProvider -  authData (reactive var): ', authData)
   const isLoggedIn = !!authData?.authToken ?? false
   const user = authData?.user ?? null
   const isLoading = authData.isLoading

@@ -9,6 +9,8 @@ import decode from 'jwt-decode'
 import { getPersistedAuthData } from './auth'
 import { setAuthData, deleteAuthData } from '../hooks/useAuth'
 
+// import { ApolloProvider } from '@apollo/client/react'
+
 const GRAPHQL_URL = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`
 const isBrowser = typeof window !== `undefined`
 const persistedAuthData = isBrowser ? getPersistedAuthData() : null
@@ -102,6 +104,7 @@ const tokenRefreshLink = new TokenRefreshLink({
 const authLink = setContext((_, { headers }) => {
   const { authToken } = apolloAuthData()
 
+  console.log('[tokenUpdateLink] authToken: ', authToken)
   return {
     headers: {
       ...headers,
@@ -126,6 +129,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
  * sent back in the response headers.
  */
 const tokenUpdateLink = new ApolloLink((operation, forward) => {
+  console.log('[tokenUpdateLink] ...')
   return forward(operation).map((response) => {
     const {
       response: { headers },
@@ -134,7 +138,7 @@ const tokenUpdateLink = new ApolloLink((operation, forward) => {
     if (headers) {
       const authToken = headers.get('x-jwt-auth')
       const refreshToken = headers.get('x-jwt-refresh')
-
+      console.log('[tokenUpdateLink] authToken: ', authToken)
       if (authToken) {
         setAuthData({ ...apolloAuthData(), authToken })
       }
