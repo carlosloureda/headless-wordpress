@@ -1,4 +1,4 @@
-<?
+<?php
 add_action('graphql_register_types', function(){
     register_graphql_mutation('createCustomProperty', [
         'inputFields' => [
@@ -14,6 +14,9 @@ add_action('graphql_register_types', function(){
                 'type' => ['list_of' => 'ID'],
                 'description' => 'gallery field'
             ],
+            'featuredImage' => [
+                'type' => ['non_null' => 'Upload'],
+            ],
 
         ],
         'outputFields' => [
@@ -28,9 +31,28 @@ add_action('graphql_register_types', function(){
 			'description' => [
 				'type' => 'String',
 				'description' => 'The description created'
-			]
+            ],
+            'text' => [
+                'type'    => 'String',
+                'resolve' => function ($payload) {
+                    return $payload['text'];
+                },
+            ],
         ],
         'mutateAndGetPayload' => function($input, $context, $info){
+ 			error_log("Hi we are inside");
+            if (isset($input['featuredImage'])) {
+                if (!function_exists('wp_handle_sideload')) {
+                    require_once(ABSPATH . 'wp-admin/includes/file.php');
+                }
+    
+                wp_handle_sideload($input['featuredImage'], [
+                    'test_form' => false,
+                    'test_type' => false,
+                ]);
+            }
+  
+
 			$title = uniqid('property-', false);
 			if (isset($input['title'])) {
 				$title = $input['title'];
@@ -44,14 +66,15 @@ add_action('graphql_register_types', function(){
             update_field('description', $input['description'], $post_id);
 						
 			// $post = get_post($post_id);
-			// error_log("Hi". $post->id);
+			 error_log("Hi". $post->id);
 			return [
 				'propertySubmitted' => true,
 				'property' => [
 					'id' => $post_id,
 					'title' => $title		
 				],
-				'description' => $input['description']	
+				'description' => $input['description']	,
+                'text' => 'Uploaded file was "' . $input['featuredImage']['name'] . '" (' . $input['featuredImage']['type'] . ').',
 			];
         }
     ]);

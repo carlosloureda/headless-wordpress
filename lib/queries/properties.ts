@@ -32,8 +32,10 @@ const GET_PROPERTY_BY_ID = gql`
 `
 
 const CREATE_PROPERTY = gql`
-  mutation CreateCustomProperty($title: String!, $description: String) {
-    createCustomProperty(input: { title: $title, description: $description }) {
+  mutation CreateCustomProperty($title: String!, $description: String, $featuredImage: Upload!) {
+    createCustomProperty(
+      input: { title: $title, description: $description, featuredImage: $featuredImage }
+    ) {
       propertySubmitted
       description
       property {
