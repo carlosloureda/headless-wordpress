@@ -32,23 +32,10 @@ const UploadProperty = (): JSX.Element => {
   const onSubmit = (property: tProperty): void => {
     console.log('property: ', property)
     const featuredImage = property.featuredImage[0]
-    console.log('typeof: ', typeof featuredImage)
-    console.log('featuredImage: ', featuredImage)
-
-    // const imgBody = new FormData()
-    // imgBody.append('image', featuredImage)
-    // console.log('imgBody: ', imgBody)
 
     // const data = new FormData()
     // const imagedata = property.featuredImage[0]
     // data.append('data', imagedata)
-
-    // console.log('data: ', data)
-    // console.log('imagedata: ', imagedata)
-
-    // for (const pair of data.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1])
-    // }
 
     setUploading(true)
     registerProperty({
